@@ -222,14 +222,14 @@ export const getCandyMachineState = async (
 
 export const getFreezePdaState = async (
   program: anchor.Program,
-  freezePda: anchor.web3.PublicKey
+    freezePda: anchor.web3.PublicKey
 ): Promise<any> => {
   try {
+    const state = await program.account.freeze.fetch(freezePda);
     const state: any = await program.account.freezePda.fetch(freezePda);
     return state;
   } catch (error) {
     return null;
-  }
 };
 
 const getMasterEdition = async (
